@@ -1,24 +1,24 @@
 <?php
 
-require(ROOT . "model/BookModel.php");
+require(ROOT . "model/ListModel.php");
 
 function index()
 {
 	
-	render("book/index", array(
-		'books' => getAllBooks()
+	render("list/index", array(
+		'list' => getAllLists()
 	));
 }
 
 function create()
 {
-	render("book/create");
+	render("list/create");
 }
 
 function createSave()
 {
-	if (createBook()) {
-		header("location:" . URL . "book/index");
+	if (createList()) {
+		header("location:" . URL . "list/index");
 		exit();
 	} else {
 		//er is iets fout gegaan..
@@ -29,17 +29,17 @@ function createSave()
 
 function edit($id)
 {
-	$song = getBook($id);
+	$list = getList($id);
 
-	render("book/edit", array(
-		"book" => $book
+	render("list/edit", array(
+		"list" => $list
 	));
 }
 
 function editSave($id)
 {
-	if (editBook($id)) {
-		header("location:" . URL . "book/index");
+	if (editList($id)) {
+		header("location:" . URL . "list/index");
 		exit();
 	} else {
 		header("location:" . URL . "error/error_404");
@@ -49,8 +49,8 @@ function editSave($id)
 
 function delete($id)
 {
-	if (deleteBook($id)) {
-		header("location:" . URL . "book/index");
+	if (deleteList($id)) {
+		header("location:" . URL . "list/index");
 		exit();
 	} else {
 		//er is iets fout gegaan..
@@ -58,3 +58,4 @@ function delete($id)
 		exit();	
 	}
 }
+

@@ -37,28 +37,28 @@ CREATE TABLE IF NOT EXISTS `list` (
 --
 
 INSERT INTO `list` (`list_id`, `list_name`, `list_item`) VALUES
-(1, 'Boodschappen', 'Nutella', 'Kaas'),
-(5, 'Kleding', 'Jurkjes', '');
+(1, 'Boodschappen', 'Nutella'),
+(2, 'Kleding', 'Jurkjes');
 
 --
 -- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexen voor tabel `books`
+-- Indexen voor tabel `list`
 --
-ALTER TABLE `books`
-  ADD PRIMARY KEY (`book_id`);
+ALTER TABLE `list`
+  ADD PRIMARY KEY (`list_id`);
 
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
 --
--- AUTO_INCREMENT voor een tabel `books`
+-- AUTO_INCREMENT voor een tabel `list`
 --
-ALTER TABLE `books`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+ALTER TABLE `list`
+  MODIFY `list_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -10,7 +10,6 @@
 	<nav>
 	<ul>
 		<li><a href="<?= URL ?>home/index">Home</a></li>
-		<li><a href="<?= URL ?>student/index">Students</a></li>
-		<li><a href="<?= URL ?>book/index">Books</a></li>	
+		<li><a href="<?= URL ?>list/index">ToDoList</a></li>
 	</ul>
 	</nav>
