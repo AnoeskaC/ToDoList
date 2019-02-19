@@ -11,7 +11,7 @@
 			echo "<tr>";
 			echo "<td>" . $list['list_id'] . "</td>";
 			echo "<td>" . $list['list_name'] . "</td>";
-			echo "<td>" . $list['list_author'] . "</td>";
+			echo "<td>" . $list['list_item'] . "</td>";
 			echo "<td><a href=\"" . URL . "list/edit/" . $list['list_id'] . "\">Wijzigen</a></td>";
 			echo "<td><a href=\"" . URL . "list/delete/" . $list['list_id'] . "\">Verwijderen</a></td>";
 			echo "</tr>";

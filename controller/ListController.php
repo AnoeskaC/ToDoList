@@ -36,7 +36,7 @@ function edit($id)
 	));
 }
 
-function editSave($id)
+function editSave()
 {
 	if (editList($id)) {
 		header("location:" . URL . "list/index");

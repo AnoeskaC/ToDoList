@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Studenten app</title>	
+	<title>To Do List.</title>	
 	<link rel="stylesheet" href="<?= URL ?>">
 </head>
 <body>
