@@ -1,11 +1,9 @@
-<?php
+<?php 
 
-function getAllLists()
-{
+function getAllLists() {
 	$db = openDatabaseConnection();
 
 	$sql = "SELECT * FROM list";
-
 	$query = $db->prepare($sql);
 	$query->execute();
 
@@ -14,91 +12,66 @@ function getAllLists()
 	return $query->fetchAll();
 }
 
-
 function getList($id)
 {
 	$db = openDatabaseConnection();
-
-	$sql = "SELECT * FROM list WHERE list_id = :id LIMIT 1";
-
+	$sql = "SELECT * FROM list WHERE list_id = :id";
 	$query = $db->prepare($sql);
 	$query->execute(array(
-		":id" => $id
-	));
-
+		":id" => $id));
 	$db = null;
-
 	return $query->fetch();
 }
 
-function createList()
-{
-	$name = isset($_POST["name"]) ? $_POST["name"] : null;
-	$item = isset($_POST["item"]) ? $_POST["item"] : null;
-	
-	if ($name === null || $item === null) {
+function createList() {
+	$listname = isset($_POST['list_name']) ? $_POST['list_name'] : null;
+
+	if (strlen($listname) == 0) {
 		return false;
 	}
-	//Database verbinding maken
+
 	$db = openDatabaseConnection();
 
-	$sql = "INSERT INTO list(list_name, list_item) VALUES (:name, :item)";
-
+	$sql = "INSERT INTO list(list_name) VALUES (:name)";
 	$query = $db->prepare($sql);
 	$query->execute(array(
-		":name" => $name,
-		":item" => $item
-	));
-
-	//Database verbinding sluiten
+		':name' => $listname));
 	$db = null;
 
 	return true;
 }
 
-function editList($id=null)
+function editList()
 {
-	$name = isset($_POST["name"]) ? $_POST["name"] : null;
-	$item = isset($_POST["item"]) ? $_POST["item"] : null;
-	
-	if ($id === null || $name === null || $item === null) {
+	$listname = isset($_POST['list_name']) ? $_POST['list_name'] : null;
+	$id = isset($_POST['list_id']) ? $_POST['list_id'] : null;
+
+	if (strlen($listname) == 0 || strlen($id) == 0) {
 		return false;
 	}
 
 	$db = openDatabaseConnection();
-
-	$sql = "UPDATE list 
-			SET list_name = :name, list_item = :item 
-			WHERE list_id = :id";
-
+	$sql = "UPDATE list SET list_name = :listname WHERE list_id = :id";
 	$query = $db->prepare($sql);
-
 	$query->execute(array(
-		":id" => $id,
-		":name" => $name,
-		":item" => $item
-	));
-
+		':listname' => $listname,
+		':id' => $id));
 	$db = null;
 
 	return true;
 }
 
-function deleteList($id)
+function deleteList($id = null)
 {
-	if ($id === '') {
+	if (!$id) {
 		return false;
 	}
 
 	$db = openDatabaseConnection();
-
-	$sql = "DELETE FROM list WHERE list_id = :id";
-
+	$sql = "DELETE FROM list WHERE list_id=:id";
 	$query = $db->prepare($sql);
 	$query->execute(array(
-		":id" => $id
-	));
-
+		':id' => $id));
 	$db = null;
 
 	return true;

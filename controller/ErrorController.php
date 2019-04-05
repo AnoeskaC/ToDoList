@@ -12,5 +12,5 @@ function error_db()
 
 function error_delete()
 {
-	echo "Het liedje weigert verwijderd te worden!";
+	echo "Het weigert verwijderd te worden!";
 }

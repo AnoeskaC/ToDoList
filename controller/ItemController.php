@@ -1,57 +1,48 @@
 <?php 
 
-require(ROOT . "model/ListModel.php");
+require(ROOT . "model/ItemModel.php");
 
 function index()
 {
-	render("list/index", array(
-		'list' => getAllLists()
+	render("home/index", array(
+		'task' => getAllItemsFromList()
 	));
 }
 
-// maak de list
-
-function create()
+function create($list_id)
 {
-	render("list/create");
+	render("task/create", array(
+		'listId' => $list_id));
 }
-
-//Het opslaan van de gemaakte list.
 
 function createSave()
 {
-	if (!createList()) {
+	if (!createItem()) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}
 	header("Location:" . URL . "home/index");
 }
-
-// het bewerken van de list
 
 function edit($id)
 {
-	render("list/edit", array(
-		'list' => getList($id)
+	render("item/edit", array(
+		'item' => getTask($id)
 	));
 }
 
-// de veranderingen op te slaan
-
 function editSave()
 {
-	if (!editList()) {
+	if (!editItem()) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}
 	header("Location:" . URL . "home/index");
 }
 
-// het verwijderen van de list
-
 function delete($id)
 {
-	if (!deleteList($id)) {
+	if (!deleteItem($id)) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}
