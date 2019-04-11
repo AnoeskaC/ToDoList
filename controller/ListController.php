@@ -1,59 +1,61 @@
-<?php 
+<?php
 
 require(ROOT . "model/ListModel.php");
 
 function index()
 {
+	
 	render("list/index", array(
-		'list' => getAllLists()
+		'lists' => getAllLists()
 	));
 }
-
-// maak de list
 
 function create()
 {
 	render("list/create");
 }
 
-//Het opslaan van de gemaakte list.
-
 function createSave()
 {
-	if (!createList()) {
-		header("Location:" . URL . "error/index");
+	if (createList()) {
+		header("location:" . URL . "list/index");
 		exit();
+	} else {
+		//er is iets fout gegaan..
+		header("location:" . URL . "error/error_db");
+		exit();	
 	}
-	header("Location:" . URL . "home/index");
 }
-
-// het bewerken van de list
 
 function edit($id)
 {
+	$list = getList($id);
+
 	render("list/edit", array(
-		'list' => getList($id)
+		"list" => $list
 	));
 }
 
-// de veranderingen op te slaan
-
-function editSave()
+function editSave($id)
 {
-	if (!editList()) {
-		header("Location:" . URL . "error/index");
+	if (editList($id)) {
+		header("location:" . URL . "list/index");
+		exit();
+	} else {
+		header("location:" . URL . "error/error_404");
 		exit();
 	}
-	header("Location:" . URL . "home/index");
 }
-
-// het verwijderen van de list
 
 function delete($id)
 {
-	if (!deleteList($id)) {
-		header("Location:" . URL . "error/index");
+	if (deleteList($id)) {
+		header("location:" . URL . "list/index");
 		exit();
+	} else {
+		//er is iets fout gegaan..
+		header("location:" . URL . "error/error_delete");
+		exit();	
 	}
-	header("Location:" . URL . "home/index");
 }
+

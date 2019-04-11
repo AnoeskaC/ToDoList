@@ -1,20 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.15.7
--- http://www.phpmyadmin.net
+-- version 4.7.7
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Gegenereerd op: 01 feb 2018 om 12:24
--- Serverversie: 5.6.37
--- PHP-versie: 5.6.31
+-- Host: localhost:8889
+-- Gegenereerd op: 16 mrt 2018 om 10:47
+-- Serverversie: 5.6.38
+-- PHP-versie: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `framework`
@@ -23,13 +17,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `song`
+--
+
+CREATE TABLE `song` (
+  `song_id` int(11) NOT NULL,
+  `song_artist` varchar(60) NOT NULL,
+  `song_name` varchar(60) NOT NULL,
+  `song_url` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `song`
+--
+
+INSERT INTO `song` (`song_id`, `song_artist`, `song_name`, `song_url`) VALUES
+(1, 'Johhny Cash', 'Ring of Fire', 'https://www.youtube.com/watch?v=QfCOJLRk2D4'),
+(2, 'the Beatles', 'Here comes the sun', 'https://www.youtube.com/watch?v=U_O1QKQCsGs'),
+(3, 'Israel Kamakawiwo‘ole', 'Over the rainbow', 'https://www.youtube.com/watch?v=V1bFr2SWP1I');
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `student`
 --
 
-CREATE TABLE IF NOT EXISTS `student` (
+CREATE TABLE `student` (
   `student_id` int(11) NOT NULL,
   `student_name` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=99041395 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `student`
@@ -45,6 +61,12 @@ INSERT INTO `student` (`student_id`, `student_name`) VALUES
 --
 
 --
+-- Indexen voor tabel `song`
+--
+ALTER TABLE `song`
+  ADD PRIMARY KEY (`song_id`);
+
+--
 -- Indexen voor tabel `student`
 --
 ALTER TABLE `student`
@@ -55,10 +77,13 @@ ALTER TABLE `student`
 --
 
 --
+-- AUTO_INCREMENT voor een tabel `song`
+--
+ALTER TABLE `song`
+  MODIFY `song_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT voor een tabel `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=99041395;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99041395;

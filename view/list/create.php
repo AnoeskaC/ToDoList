@@ -1,5 +1,5 @@
-<form action="<?= URL ?>list/createSave" method="post">
-  <h2>Create</h2>
-  List name: <input type="text" name="list_name"><br>
-  <button type="submit">Submit</button>
+<form action="<?= URL ?>list/createSave" method="POST">
+	<input type="text" name="name" placeholder="Name">
+	<input type="text" name="item" placeholder="Item">
+	<input type="submit">
 </form>
